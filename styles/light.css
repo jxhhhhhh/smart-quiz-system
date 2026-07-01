@@ -1,0 +1,61 @@
+/* ═══════════════════════════════════════════════════════════
+   浅色模式
+   ═══════════════════════════════════════════════════════════ */
+
+.stApp { background: #f5f7fa; }
+.main .block-container { background: #ffffff; box-shadow: 0 1px 12px rgba(0,0,0,0.05); color: #1e293b; }
+
+h1 { color: #0369a1 !important; -webkit-text-fill-color: #0369a1 !important; background: none !important; }
+h2 { color: #0f172a !important; }
+h3 { color: #1e293b !important; }
+p, span, li, label, td, th, .stMarkdown p { color: #334155 !important; }
+.caption, .stCaption, small, [data-testid="stCaptionContainer"] { color: #64748b !important; }
+
+.stButton > button { box-shadow: 0 2px 8px rgba(14,165,233,0.15); }
+.stButton > button:hover { box-shadow: 0 6px 20px rgba(14,165,233,0.2); }
+.stButton > button[kind="secondary"],
+.stButton > button[data-testid="stBaseButton-secondary"] { background: #f8fafc; color: #334155; border: 1px solid #e2e8f0; }
+.stButton > button[kind="secondary"]:hover,
+.stButton > button[data-testid="stBaseButton-secondary"]:hover { background: #f1f5f9; border-color: #cbd5e1; }
+
+[data-testid="stMetric"] { background: #f8fafc; border: 1px solid #f1f5f9; box-shadow: 0 1px 4px rgba(0,0,0,0.03); }
+[data-testid="stMetric"]:hover { box-shadow: 0 4px 14px rgba(0,0,0,0.06); }
+[data-testid="stMetricValue"] { color: #0284c7 !important; -webkit-text-fill-color: #0284c7 !important; background: none !important; }
+[data-testid="stMetricLabel"] { color: #64748b !important; }
+
+.stTextArea textarea, .stTextInput input { background: #ffffff !important; color: #1e293b !important; border: 1px solid #e2e8f0 !important; }
+.stTextArea textarea:focus, .stTextInput input:focus { border-color: #0ea5e9 !important; box-shadow: 0 0 0 3px rgba(14,165,233,0.1) !important; }
+.stTextArea textarea::placeholder, .stTextInput input::placeholder { color: #94a3b8 !important; }
+
+.stSelectbox > div > div { background: #ffffff !important; color: #1e293b !important; border: 1px solid #e2e8f0 !important; }
+[data-baseweb="popover"] [data-baseweb="menu"], [data-baseweb="listbox"] { background: #ffffff !important; border: 1px solid #e2e8f0 !important; box-shadow: 0 8px 30px rgba(0,0,0,0.08) !important; }
+[data-baseweb="popover"] [data-baseweb="option"], [data-baseweb="listbox"] [role="option"] { color: #334155 !important; }
+[data-baseweb="popover"] [data-baseweb="option"]:hover, [data-baseweb="listbox"] [role="option"]:hover { background: #f0f9ff !important; }
+
+.stRadio > div > label, .main .stRadio > div > label { background: #f8fafc; color: #334155 !important; border: 1px solid #f1f5f9; }
+.stRadio > div > label:hover, .main .stRadio > div > label:hover { border-color: #0ea5e9; background: #f0f9ff; }
+.stCheckbox > label { color: #334155 !important; }
+
+.stFileUploader { border-color: #e2e8f0; background: #fafbfc; }
+.stFileUploader:hover { background: #f0f9ff; }
+
+.stSuccess { background: #ecfdf5; border: 1px solid #a7f3d0; color: #065f46 !important; }
+.stError { background: #fef2f2; border: 1px solid #fecaca; color: #991b1b !important; }
+.stInfo { background: #f0f9ff; border: 1px solid #bae6fd; color: #0c4a6e !important; }
+.stWarning { background: #fffbeb; border: 1px solid #fde68a; color: #92400e !important; }
+
+.question-card { background: #ffffff; border: 1px solid #f1f5f9; box-shadow: 0 1px 6px rgba(0,0,0,0.04); }
+.question-card:hover { box-shadow: 0 4px 18px rgba(0,0,0,0.07); border-color: #e0f2fe; }
+.info-card { background: #f8fafc; border: 1px solid #f1f5f9; }
+.stat-card { background: linear-gradient(135deg, #f0f9ff, #ecfeff); border: 1px solid #e0f2fe; }
+
+hr { background: #f1f5f9; }
+.footer { color: #94a3b8; }
+.stDataFrame, [data-testid="stDataFrame"] { color: #1e293b !important; }
+.streamlit-expanderHeader { color: #1e293b !important; }
+.stTabs [data-baseweb="tab"] { color: #64748b !important; }
+.stTabs [data-baseweb="tab"][aria-selected="true"] { color: #0284c7 !important; }
+.stTabs [data-baseweb="tab-border"] { background-color: #e2e8f0 !important; }
+.stTabs [data-baseweb="tab-highlight"] { background-color: #0ea5e9 !important; }
+.stSlider > div > div > div { background: #0ea5e9; }
+.stProgress > div > div { background: linear-gradient(90deg, #0ea5e9, #10b981); }

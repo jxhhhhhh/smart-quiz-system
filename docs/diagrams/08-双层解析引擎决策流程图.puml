@@ -1,0 +1,82 @@
+@startuml 08-双层解析引擎决策流程图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 12
+skinparam activityDiamondBackgroundColor #FFF9C4
+skinparam activityDiamondBorderColor #F9A825
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam noteBackgroundColor #FFFDE7
+skinparam noteBorderColor #FBC02D
+
+title **双层解析引擎 — 置信度路由决策流程图**\n
+
+start
+
+:接收原始文本;
+
+partition "**第一层：正则高速解析**" #E8F5E9 {
+  :parse_text_with_confidence(text);
+
+  :预编译正则表达式匹配;
+
+  :识别题型特征
+  · 单选：A/B/C/D 选项 + 无"多选"标注
+  · 多选：A/B/C/D 选项 + "多选"标注
+  · 判断：含"判断"/"对错"
+  · 填空：含"___"或"（ ）"
+  · 简答：含"简答"/"论述"/"计算";
+
+  :计算每题置信度 (0.0 ~ 1.0);
+}
+
+note right
+  **置信度评分规则：**
+  · 题型识别成功 +0.3
+  · 选项格式正确 +0.3
+  · 答案提取成功 +0.2
+  · 题干长度合理 +0.1
+  · 无异常字符   +0.1
+end note
+
+:得到 parsed 列表;
+
+partition "**第二层：AI 智能兜底**" #E3F2FD {
+
+  while (遍历每道题) is (还有题目)
+
+    if (confidence >= 0.8 ?) then (**高置信度**\n直接采纳)
+      :✅ 直接加入结果集;
+      note right: 无需 AI 干预\n速度最快
+
+    elseif (confidence >= 0.5 ?) then (**中置信度**\nAI 修复)
+      :调用 AI 逐题修复;
+      :ai_repair_question(\n  raw_block,\n  parsed_result,\n  api_key, base_url, model);
+      :用 AI 结果替换原结果;
+      note right: 保留正则结果\nAI 仅修正细节
+
+    else (**低置信度**\nAI 重新解析)
+      :调用 AI 整段重新解析;
+      :ai_parse_questions(\n  text,\n  api_key, base_url, model);
+      :用 AI 结果替换;
+      note right: 正则解析失败\n完全依赖 AI
+
+    endif
+
+  endwhile (遍历完毕)
+}
+
+:汇总最终题目列表;
+
+partition "**后处理**" #FCE4EC {
+  :语义指纹去重 (MD5);
+  :质量检查（空题干/缺答案）;
+  :自动修复可修复项;
+  :标记不可修复项为跳过;
+}
+
+:返回最终结果;
+stop
+
+@enduml

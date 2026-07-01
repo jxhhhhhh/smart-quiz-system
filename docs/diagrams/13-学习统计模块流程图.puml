@@ -1,0 +1,26 @@
+@startuml 13-学习统计模块流程图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 13
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam activityDiamondBackgroundColor #FFF9C4
+skinparam activityDiamondBorderColor #F9A825
+
+title **学习统计模块流程图**
+
+start
+:读取当前用户答题记录;
+:近 30 天指标卡片（答题数 / 正确数 / 正确率）;
+:近 7 天每日答题量（柱状图）;
+:近 7 天每日正确率（折线图）;
+:各题型正确率（柱状图）;
+if (存在正确率 < 60% 的题型 ?) then (是)
+  :标记为薄弱题型，生成针对性建议;
+else (否)
+  :生成鼓励性建议;
+endif
+:Plotly 交互式图表 + 建议卡片 → 渲染展示;
+stop
+@enduml

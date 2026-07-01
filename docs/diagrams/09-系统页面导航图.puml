@@ -1,0 +1,73 @@
+@startuml 09-系统页面导航图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 13
+skinparam roundCorner 12
+skinparam shadowing false
+skinparam rectangle {
+  RoundCorner 15
+}
+
+title **系统页面导航图**\n
+
+together {
+  rectangle "**🏠 首页**\n(main.py)" as HOME #BBDEFB;line:1565C0
+}
+
+together {
+  rectangle "**📥 题目导入**\nimport_page.py" as P1 #C8E6C9;line:2E7D32
+  rectangle "**📝 题目管理**\nmanage_page.py" as P6 #C8E6C9;line:2E7D32
+  rectangle "**⭐ 我的收藏**\nfavorites_page.py" as P7 #C8E6C9;line:2E7D32
+}
+
+together {
+  rectangle "**🎯 刷题练习**\npractice_page.py" as P2 #FFF9C4;line:F9A825
+  rectangle "**📋 模拟考试**\nexam_page.py" as P3 #FFF9C4;line:F9A825
+  rectangle "**🔄 间隔复习**\nreview_page.py" as P5 #FFF9C4;line:F9A825
+}
+
+together {
+  rectangle "**📊 学习统计**\nstats_page.py" as P4 #E1BEE7;line:7B1FA2
+  rectangle "**📜 答题历史**\nhistory_page.py" as P8 #E1BEE7;line:7B1FA2
+}
+
+together {
+  rectangle "**👤 用户认证**\nlogin_page.py" as P9 #FFCCBC;line:E64A19
+}
+
+' 侧边栏导航
+HOME -right-> P1 : "侧边栏导航"
+HOME -right-> P2 : "侧边栏导航"
+HOME -right-> P3 : "侧边栏导航"
+HOME -right-> P4 : "侧边栏导航"
+HOME -right-> P5 : "侧边栏导航"
+HOME -right-> P6 : "侧边栏导航"
+HOME -right-> P7 : "侧边栏导航"
+HOME -right-> P8 : "侧边栏导航"
+HOME -right-> P9 : "侧边栏导航"
+
+' 页面间跳转
+P1 -down-> P6 : "导入完成\n→ 查看题库"
+P2 -down-> P8 : "练习结束\n→ 查看历史"
+P3 -down-> P8 : "考试结束\n→ 查看历史"
+P5 -down-> P2 : "复习中\n→ 进入练习"
+
+note bottom of P9
+  **未登录时**：只能看到登录/注册页面
+  **已登录后**：显示全部 9 个页面导航
+end note
+
+legend bottom
+  **导航说明**
+  ━━━━━━━━━━━━━━━━━━━━
+  🟦 首页（路由入口）
+  🟩 题目管理模块（3个页面）
+  🟨 练习系统模块（3个页面）
+  🟪 数据分析模块（2个页面）
+  🟧 用户系统模块（1个页面）
+  ━━━━━━━━━━━━━━━━━━━━
+  通过 Streamlit 侧边栏 st.sidebar 实现页面切换
+end legend
+
+@enduml

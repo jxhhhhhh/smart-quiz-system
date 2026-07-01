@@ -1,0 +1,41 @@
+@startuml 04-用户认证流程图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 13
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam activityDiamondBackgroundColor #FFF9C4
+skinparam activityDiamondBorderColor #F9A825
+
+title **用户认证模块流程图**
+
+start
+:用户访问系统;
+if (session_state 已登录 ?) then (是)
+  :进入系统主界面;
+  stop
+endif
+:显示登录 / 注册页面;
+if (操作类型 ?) then (注册)
+  :输入用户名 / 密码 / 显示名;
+  if (用户名已存在 ?) then (是)
+    :提示"用户名已被注册";
+    stop
+  endif
+  :生成随机盐(32字符);
+  :SHA-256(盐+密码);
+  :存储 盐$哈希 → users 表;
+  :提示"注册成功，请登录";
+else (登录)
+  :输入用户名 / 密码;
+  :查询 users 表，分离盐和哈希;
+  :SHA-256(盐+输入密码);
+  if (哈希匹配 ?) then (匹配)
+    :写入 session_state，进入系统;
+  else (不匹配)
+    :提示"密码错误";
+  endif
+endif
+stop
+@enduml

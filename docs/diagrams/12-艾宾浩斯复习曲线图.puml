@@ -1,0 +1,57 @@
+@startuml 12-艾宾浩斯复习曲线图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 12
+
+title **艾宾浩斯遗忘曲线 — 间隔复习策略**\n
+
+<style>
+  rectangle {
+    RoundCorner 10
+  }
+}
+</style>
+
+' 遗忘曲线示意
+rectangle "学习完成\n第 0 天" as D0 #4CAF50;line:2E7D32;text:FFFFFF
+rectangle "第 1 次复习\n第 1 天" as D1 #8BC34A;line:558B2F;text:FFFFFF
+rectangle "第 2 次复习\n第 2 天" as D2 #CDDC39;line:827717;text:212121
+rectangle "第 3 次复习\n第 4 天" as D3 #FFEB3B;line:F9A825;text:212121
+rectangle "第 4 次复习\n第 7 天" as D4 #FFC107;line:FF8F00;text:212121
+rectangle "第 5 次复习\n第 15 天" as D5 #FF9800;line:E65100;text:FFFFFF
+rectangle "第 6 次复习\n第 30 天" as D6 #FF5722;line:BF360C;text:FFFFFF
+rectangle "长期记忆\n✅ 巩固" as FINAL #F44336;line:B71C1C;text:FFFFFF
+
+D0 -right-> D1 : "24h"
+D1 -right-> D2 : "24h"
+D2 -right-> D3 : "48h"
+D3 -right-> D4 : "72h"
+D4 -right-> D5 : "8天"
+D5 -right-> D6 : "15天"
+D6 -right-> FINAL : "完成"
+
+note bottom of D0
+  **记忆保持率变化：**
+  · 学习后 20 分钟 → 保持 58%
+  · 学习后 1 小时  → 保持 44%
+  · 学习后 1 天    → 保持 34%
+  · 学习后 6 天    → 保持 25%
+  · 学习后 31 天   → 保持 21%
+end note
+
+note bottom of FINAL
+  **系统实现：**
+  · review_plan.py 引擎
+  · 根据 practice_records 计算
+  · 自动推送复习提醒
+  · 支持按学科/题型筛选
+end note
+
+legend bottom
+  **间隔复习节点：第 1、2、4、7、15、30 天**
+  每次复习后重置计时器，未复习则跳过该周期
+  连续 6 次复习成功 → 进入长期记忆
+end legend
+
+@enduml

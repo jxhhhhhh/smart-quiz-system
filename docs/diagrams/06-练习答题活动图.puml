@@ -1,0 +1,29 @@
+@startuml 06-练习答题活动图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 13
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam activityDiamondBackgroundColor #FFF9C4
+skinparam activityDiamondBorderColor #F9A825
+
+title **刷题练习模块流程图**
+
+start
+:选择模式（随机 / 错题 / 难度）+ 参数;
+if (有未完成练习 ?) then (是)
+  :恢复上次进度;
+else (否)
+  :从题库抽题;
+endif
+repeat
+  :展示题目;
+  :用户作答;
+  :check_answer() 多层匹配判断正误;
+  :显示正确答案 + 解析;
+  :保存答题记录 + 持久化进度;
+repeat while (还有题目 ?) is (是)
+:生成练习报告（正确率 / 用时 / 各题型统计）;
+stop
+@enduml

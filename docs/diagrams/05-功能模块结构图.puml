@@ -1,0 +1,61 @@
+@startuml 05-功能模块结构图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 12
+skinparam roundCorner 8
+
+title **智能刷题系统 — 功能模块结构图**\n
+
+left to right direction
+
+rectangle "**智能刷题系统**" as ROOT #BBDEFB;line:1565C0;text:0D47A1 {
+
+  rectangle "**题目管理**" as M1 #C8E6C9;line:2E7D32 {
+    rectangle "题目导入\n(文本/文件/图片)" as M1_1
+    rectangle "智能解析\n(正则/AI/OCR)" as M1_2
+    rectangle "质量检查\n与自动修复" as M1_3
+    rectangle "语义去重\n(MD5指纹)" as M1_4
+    rectangle "题目编辑\n(内容/选项/答案)" as M1_5
+    rectangle "题目删除\n(单题/批量)" as M1_6
+    rectangle "题目收藏" as M1_7
+    rectangle "题库导出\n(TXT/JSON)" as M1_8
+  }
+
+  rectangle "**练习系统**" as M2 #FFF9C4;line:F9A825 {
+    rectangle "随机模式\n(随机抽题)" as M2_1
+    rectangle "错题重练\n(按错误次数)" as M2_2
+    rectangle "难度专项\n(按难度筛选)" as M2_3
+    rectangle "模拟考试\n(限时/自动交卷)" as M2_4
+    rectangle "间隔重复\n(艾宾浩斯)" as M2_5
+    rectangle "练习进度\n持久化" as M2_6
+  }
+
+  rectangle "**数据分析**" as M3 #E1BEE7;line:7B1FA2 {
+    rectangle "学习统计\n(正确率/趋势)" as M3_1
+    rectangle "错题分析\n(按题型分类)" as M3_2
+    rectangle "答题历史\n(时间/结果筛选)" as M3_3
+    rectangle "智能建议\n(薄弱知识点)" as M3_4
+  }
+
+  rectangle "**用户系统**" as M4 #FFCCBC;line:E64A19 {
+    rectangle "用户注册/登录" as M4_1
+    rectangle "密码安全\n(SHA-256+盐)" as M4_2
+    rectangle "数据隔离\n(user_id)" as M4_3
+  }
+
+  rectangle "**系统功能**" as M5 #B2EBF2;line:00838F {
+    rectangle "深色/浅色\n主题切换" as M5_1
+    rectangle "移动端\n响应式布局" as M5_2
+    rectangle "CSV/JSON\n数据导出" as M5_3
+    rectangle "统一日志\n记录" as M5_4
+  }
+}
+
+ROOT -down-> M1
+ROOT -down-> M2
+ROOT -down-> M3
+ROOT -down-> M4
+ROOT -down-> M5
+
+@enduml

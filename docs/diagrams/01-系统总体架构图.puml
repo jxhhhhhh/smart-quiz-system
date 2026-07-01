@@ -1,0 +1,100 @@
+@startuml 01-系统总体架构图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam componentStyle rectangle
+skinparam defaultFontSize 13
+skinparam roundCorner 10
+skinparam shadowing false
+
+skinparam package {
+  BackgroundColor<<presentation>> #E3F2FD
+  BorderColor<<presentation>> #1565C0
+  BackgroundColor<<business>> #E8F5E9
+  BorderColor<<business>> #2E7D32
+  BackgroundColor<<processing>> #FFF3E0
+  BorderColor<<processing>> #E65100
+  BackgroundColor<<storage>> #FCE4EC
+  BorderColor<<storage>> #C62828
+}
+
+skinparam component {
+  BackgroundColor #FFFFFF
+  BorderColor #90A4AE
+  FontSize 12
+}
+
+title **智能刷题系统 — 四层架构图**\n
+
+package "用户交互层 (Presentation)" <<presentation>> {
+  component [web_interface.py\n(路由分发中心)] as WEB
+  component [main.py\n(应用入口)] as MAIN
+  component [styles.py\n(773行主题CSS)] as STYLES
+  component [_common.py\n(公共组件)] as COMMON
+
+  package "page_modules/" {
+    component [import_page.py\n(题目导入)] as P1
+    component [practice_page.py\n(刷题练习)] as P2
+    component [exam_page.py\n(模拟考试)] as P3
+    component [stats_page.py\n(学习统计)] as P4
+    component [review_page.py\n(间隔复习)] as P5
+    component [manage_page.py\n(题目管理)] as P6
+    component [favorites_page.py\n(我的收藏)] as P7
+    component [history_page.py\n(答题历史)] as P8
+    component [login_page.py\n(用户认证)] as P9
+  }
+}
+
+package "业务逻辑层 (Business Logic)" <<business>> {
+  component [question_importer.py\n(导入流水线编排)] as IMPORTER
+  component [practice_session.py\n(练习会话管理)] as PRACTICE
+  component [ai_enhancement.py\n(AI增强模块)] as AI_ENH
+  component [review_plan.py\n(间隔复习引擎)] as REVIEW
+}
+
+package "数据处理层 (Data Processing)" <<processing>> {
+  component [parser.py\n(正则解析引擎)] as REGEX
+  component [ai_parser.py\n(AI解析引擎)] as AI_PARSE
+}
+
+package "数据存储层 (Data Storage)" <<storage>> {
+  component [database.py\n(SQLite 单例管理器)] as DB
+  component [config.py\n(集中配置)] as CONFIG
+  component [logger.py\n(统一日志)] as LOGGER
+}
+
+' 页面模块 → 路由分发
+P1 -down-> WEB
+P2 -down-> WEB
+P3 -down-> WEB
+P4 -down-> WEB
+P5 -down-> WEB
+P6 -down-> WEB
+P7 -down-> WEB
+P8 -down-> WEB
+P9 -down-> WEB
+MAIN -down-> WEB
+
+' 路由 → 业务逻辑
+WEB -down-> IMPORTER : 导入请求
+WEB -down-> PRACTICE : 练习请求
+WEB -down-> REVIEW : 复习请求
+WEB -down-> AI_ENH : AI增强
+
+' 业务逻辑 → 数据处理
+IMPORTER -down-> REGEX : 正则解析
+IMPORTER -down-> AI_PARSE : AI解析
+
+' 数据处理 → 数据存储
+REGEX -down-> DB : 存储结果
+AI_PARSE -down-> DB : 存储结果
+PRACTICE -down-> DB : 读写记录
+REVIEW -down-> DB : 读取历史
+IMPORTER -down-> DB : 批量入库
+
+' 辅助
+STYLES -right-> WEB
+COMMON -right-> WEB
+CONFIG -right-> DB
+LOGGER -right-> DB
+
+@enduml

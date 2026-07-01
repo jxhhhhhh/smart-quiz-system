@@ -1,0 +1,72 @@
+/* ═══════════════════════════════════════════════════════════
+   侧边栏样式（深浅色共用）
+   ═══════════════════════════════════════════════════════════ */
+
+[data-testid="stSidebar"] {
+    background: #0f172a;
+    padding: 0.6rem 0.8rem;
+    border-right: 1px solid rgba(255,255,255,0.04);
+}
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] p,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h1,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h2,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] h3,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] span,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] li,
+[data-testid="stSidebar"] [data-testid="stMarkdownContainer"] label {
+    color: #e2e8f0 !important;
+}
+[data-testid="stSidebar"] .stRadio > label {
+    color: #64748b !important;
+    font-weight: 600;
+    font-size: 11px;
+    padding: 0;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+[data-testid="stSidebar"] .stRadio > div { gap: 0.25rem !important; }
+[data-testid="stSidebar"] .stRadio > div > label,
+[data-testid="stSidebar"] .stRadio > div > div > label {
+    background: transparent !important;
+    padding: 0.5rem 0.85rem !important;
+    border-radius: 10px !important;
+    border: 1px solid transparent !important;
+    margin-bottom: 0.05rem !important;
+    transition: all 0.2s cubic-bezier(.4,0,.2,1) !important;
+    min-height: unset !important;
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+}
+[data-testid="stSidebar"] .stRadio > div > label:hover,
+[data-testid="stSidebar"] .stRadio > div > div > label:hover {
+    background: rgba(56,189,248,0.06) !important;
+    border-color: rgba(56,189,248,0.15) !important;
+}
+[data-testid="stSidebar"] .stRadio > div > label[data-checked="true"],
+[data-testid="stSidebar"] .stRadio > div > div > label[data-checked="true"] {
+    background: rgba(14,165,233,0.12) !important;
+    border-color: rgba(14,165,233,0.4) !important;
+    box-shadow: 0 0 0 1px rgba(14,165,233,0.15) !important;
+}
+[data-testid="stSidebar"] .stRadio label span,
+[data-testid="stSidebar"] .stRadio p {
+    color: #cbd5e1 !important;
+    font-size: 14.5px !important;
+    line-height: 1.5 !important;
+}
+[data-testid="stSidebar"] .stRadio > div > label[data-checked="true"] span,
+[data-testid="stSidebar"] .stRadio > div > div > label[data-checked="true"] span {
+    color: #38bdf8 !important;
+    font-weight: 600 !important;
+}
+[data-testid="stSidebar"] [data-testid="stMetricLabel"],
+[data-testid="stSidebar"] [data-testid="stMetricValue"] { color: #e2e8f0 !important; }
+[data-testid="stSidebar"] hr {
+    border: none !important;
+    height: 1px !important;
+    background: rgba(255,255,255,0.06) !important;
+    margin: 0.5rem 0 !important;
+}
+[data-testid="stSidebar"] .stRadio { overflow-y: auto; max-height: calc(100vh - 360px); }
+[data-testid="stSidebar"] .stToggle { margin-top: 0.3rem; }

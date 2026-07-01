@@ -1,0 +1,103 @@
+@startuml 02-数据库E-R图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 12
+skinparam linetype ortho
+
+title **智能刷题系统 — 数据库 E-R 图**\n
+
+entity "questions (题目表)" as Q {
+  * id : INTEGER <<PK AUTOINCREMENT>>
+  --
+  * subject : TEXT (学科分类)
+  * question_content : TEXT (题目正文)
+  * options : TEXT (选项JSON)
+  * correct_answer : TEXT (正确答案)
+  * difficulty : INTEGER (难度1-3)
+  * question_type : TEXT (题型)
+  * fingerprint : TEXT (语义指纹MD5)
+  * ai_enhanced : INTEGER (AI增强标记)
+  source : TEXT (来源)
+  tags : TEXT (知识点标签)
+  chapter : TEXT (章节)
+  * created_at : TEXT (创建时间)
+}
+
+entity "practice_records\n(答题记录表)" as PR {
+  * record_id : INTEGER <<PK AUTOINCREMENT>>
+  --
+  * question_id : INTEGER <<FK>>
+  * user_id : INTEGER (用户ID)
+  * user_answer : TEXT (用户答案)
+  * is_correct : INTEGER (是否正确)
+  * time_spent : REAL (用时秒)
+  * practice_date : TEXT (答题时间)
+}
+
+entity "favorites\n(收藏表)" as FAV {
+  * id : INTEGER <<PK AUTOINCREMENT>>
+  --
+  * question_id : INTEGER <<FK UNIQUE>>
+  * user_id : INTEGER (用户ID)
+  * created_at : TEXT (收藏时间)
+}
+
+entity "import_history\n(导入历史表)" as IH {
+  * id : INTEGER <<PK AUTOINCREMENT>>
+  --
+  * source : TEXT (来源文件名)
+  * count : INTEGER (导入数量)
+  * subject : TEXT (学科)
+  * parse_mode : TEXT (解析模式)
+  * user_id : INTEGER (用户ID)
+  * imported_at : TEXT (导入时间)
+}
+
+entity "users\n(用户表)" as USR {
+  * id : INTEGER <<PK AUTOINCREMENT>>
+  --
+  * username : TEXT <<UNIQUE>> (用户名)
+  * password_hash : TEXT (密码哈希)
+  * display_name : TEXT (显示名称)
+  * role : TEXT (角色 user/admin)
+  * created_at : TEXT (注册时间)
+}
+
+entity "practice_sessions\n(练习会话表)" as PS {
+  * id : INTEGER <<PK AUTOINCREMENT>>
+  --
+  * session_key : TEXT (会话标识)
+  * questions_json : TEXT (题目快照JSON)
+  * current_index : INTEGER (当前进度)
+  * score : INTEGER (当前得分)
+  * mode : TEXT (练习模式)
+  * settings_json : TEXT (设置JSON)
+  * user_id : INTEGER (用户ID)
+  * created_at : TEXT (创建时间)
+  * updated_at : TEXT (更新时间)
+}
+
+' 关系
+Q ||--o{ PR : "1:N\n一个题目对应\n多条答题记录"
+Q ||--o| FAV : "1:1\n一个题目最多\n被收藏一次"
+USR ||--o{ PR : "1:N\n一个用户对应\n多条答题记录"
+USR ||--o{ FAV : "1:N\n一个用户可以\n收藏多题"
+USR ||--o{ PS : "1:N\n一个用户可以\n有多个会话"
+USR ||--o{ IH : "1:N\n一个用户可以\n有多次导入"
+
+' 索引标注
+note bottom of Q
+  **索引:**
+  · idx_questions_subject (subject)
+  · idx_questions_difficulty (difficulty)
+  · idx_questions_fingerprint (fingerprint)
+end note
+
+note bottom of PR
+  **索引:**
+  · idx_records_question_id (question_id)
+  · idx_records_practice_date (practice_date)
+end note
+
+@enduml

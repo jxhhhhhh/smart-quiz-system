@@ -1,0 +1,29 @@
+@startuml 03-题目导入流程图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 13
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam activityDiamondBackgroundColor #FFF9C4
+skinparam activityDiamondBorderColor #F9A825
+
+title **题目导入与解析模块流程图**
+
+start
+:用户输入（文本 / PDF·Word / 图片）;
+:文本清洗 / 文件提取 / 图片OCR;
+:正则解析（带置信度）;
+if (置信度 >= 0.8) then (高)
+  :直接采纳;
+elseif (置信度 >= 0.5) then (中)
+  :AI 逐题修复;
+else (低)
+  :AI 整段重新解析;
+endif
+:MD5 语义去重;
+:质量检查（空题干 / 缺答案 / 异常选项）;
+:自动修复 / 标记跳过;
+:批量入库 → 生成导入报告;
+stop
+@enduml

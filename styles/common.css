@@ -1,0 +1,153 @@
+/* ═══════════════════════════════════════════════════════════
+   公共组件样式（深浅色复用，通过 CSS 变量切换）
+   ═══════════════════════════════════════════════════════════ */
+
+/* ── 全局基础 ── */
+.main .block-container p,
+.main .block-container li,
+.main .block-container td,
+.main .block-container th,
+.main .block-container label,
+.main .block-container h1,
+.main .block-container h2,
+.main .block-container h3,
+.main .block-container h4,
+.main .block-container h5,
+.main .block-container h6,
+.main .block-container a,
+.stMarkdown p,
+.stMarkdown li,
+[data-testid="stMetricValue"],
+[data-testid="stMetricLabel"],
+[data-testid="stCaptionContainer"] {
+    font-family: "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
+}
+
+.stApp {
+    transition: background 0.3s ease;
+}
+
+.main .block-container {
+    padding: 1.2rem 1.5rem 1.5rem;
+    border-radius: 16px;
+    margin: 0.5rem;
+    max-width: 100%;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+[data-testid="stHorizontalBlock"] {
+    gap: 0.8rem;
+}
+
+[data-testid="stExpander"] {
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+h1 { font-size: 22px !important; font-weight: 700 !important; line-height: 1.3 !important; margin-bottom: 1rem !important; letter-spacing: -0.01em; }
+h2 { font-size: 18px !important; font-weight: 600 !important; line-height: 1.35 !important; margin-top: 1.5rem !important; }
+h3 { font-size: 16px !important; font-weight: 600 !important; line-height: 1.4 !important; margin-top: 1.2rem !important; }
+
+p, span, li, label, td, th, .stMarkdown p { font-size: 15px !important; line-height: 1.6 !important; }
+.caption, .stCaption, small, [data-testid="stCaptionContainer"] { font-size: 12.5px !important; line-height: 1.4 !important; }
+
+.stButton > button {
+    background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+    color: #fff;
+    border: none;
+    padding: 0.55rem 1.6rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: all 0.2s cubic-bezier(.4,0,.2,1);
+    box-shadow: 0 2px 8px rgba(14,165,233,0.2);
+    cursor: pointer;
+}
+.stButton > button:hover {
+    background: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+    box-shadow: 0 4px 20px rgba(14,165,233,0.3);
+    transform: translateY(-1px);
+}
+.stButton > button:active {
+    transform: scale(0.97) translateY(0);
+    box-shadow: 0 1px 4px rgba(14,165,233,0.2);
+}
+
+[data-testid="stMetric"] { padding: 1.1rem 1.2rem; border-radius: 12px; transition: transform 0.2s ease, box-shadow 0.2s ease; }
+[data-testid="stMetric"]:hover { transform: translateY(-2px); }
+[data-testid="stMetricValue"] { font-size: 24px !important; font-weight: 700 !important; line-height: 1.2 !important; }
+[data-testid="stMetricLabel"] { font-size: 13px !important; font-weight: 500 !important; line-height: 1.4 !important; }
+
+.stTextArea textarea, .stTextInput input { border-radius: 12px !important; padding: 0.7rem 0.9rem !important; font-size: 15px !important; line-height: 1.5 !important; transition: border-color 0.2s ease, box-shadow 0.2s ease !important; }
+.stTextArea textarea:focus, .stTextInput input:focus { box-shadow: 0 0 0 3px rgba(14,165,233,0.12) !important; }
+
+.stSelectbox > div > div { border-radius: 12px !important; }
+[data-baseweb="popover"] { z-index: 999999 !important; }
+[data-baseweb="popover"] [data-baseweb="menu"], [data-baseweb="listbox"] { max-height: 400px !important; overflow-y: auto !important; z-index: 999999 !important; border-radius: 12px !important; box-shadow: 0 8px 30px rgba(0,0,0,0.12) !important; }
+[data-baseweb="popover"] [data-baseweb="option"], [data-baseweb="listbox"] [role="option"] { padding: 0.5rem 1rem !important; font-size: 14.5px !important; line-height: 1.4 !important; min-height: 2rem !important; border-radius: 8px !important; margin: 2px 4px !important; }
+
+.stRadio > div > label, .main .stRadio > div > label { padding: 0.65rem 1.1rem; border-radius: 12px; transition: all 0.2s cubic-bezier(.4,0,.2,1); cursor: pointer; font-size: 15px !important; line-height: 1.5 !important; }
+.stCheckbox > label { font-size: 15px !important; }
+
+.stSlider > div > div > div { background: #0ea5e9; }
+.stProgress > div > div { background: linear-gradient(90deg, #0ea5e9, #10b981); border-radius: 4px; }
+
+.stFileUploader { border: 2px dashed; border-radius: 14px; padding: 1.2rem; transition: border-color 0.2s ease, background 0.2s ease; margin: 0.5rem 0; }
+.stFileUploader:hover { border-color: #0ea5e9 !important; }
+.stFileUploader label { font-size: 15px !important; }
+
+.streamlit-expanderHeader { font-size: 15px !important; border-radius: 12px; transition: background 0.15s ease; position: relative; z-index: 1; }
+[data-testid="stExpander"] { position: relative; z-index: 1; }
+
+.stSuccess, .stError, .stInfo, .stWarning { border-radius: 12px !important; font-size: 15px !important; padding: 0.7rem 1rem !important; animation: fadeInUp 0.3s ease-out; margin: 0.5rem 0 !important; }
+
+.stNumberInput { margin: 0.3rem 0; }
+.stNumberInput input { border-radius: 10px !important; }
+
+hr { border: none; height: 1px; margin: 1rem 0; }
+.stMarkdown p { margin: 0.3rem 0; }
+h1 { margin-top: 0.5rem !important; }
+h2 { margin-top: 1.2rem !important; }
+h3 { margin-top: 1rem !important; }
+
+.question-card { padding: 1.5rem; border-radius: 14px; margin: 0.8rem 0; border-left: 4px solid #0ea5e9; transition: box-shadow 0.2s ease; }
+.question-card:hover { box-shadow: 0 4px 20px rgba(0,0,0,0.08); }
+.info-card { padding: 1.2rem; border-radius: 14px; margin: 0.8rem 0; }
+.stat-card { padding: 1.5rem; border-radius: 14px; text-align: center; }
+
+hr { border: none; height: 1px; margin: 1.2rem 0; }
+.footer { text-align: center; padding: 1.5rem; font-size: 12.5px; line-height: 1.5; }
+
+.stDataFrame, [data-testid="stDataFrame"] { border-radius: 12px !important; overflow: hidden !important; font-size: 14px !important; }
+
+.stTabs [data-baseweb="tab"] { font-size: 15px !important; font-weight: 500 !important; padding: 0.6rem 1.2rem !important; border-radius: 8px 8px 0 0 !important; }
+.stTabs [data-baseweb="tab-border"] { border-radius: 0 0 12px 12px; }
+
+.stProgress > div > div { transition: width 0.4s ease; }
+
+@media (max-width: 768px) {
+    h1 { font-size: 18px !important; }
+    h2 { font-size: 16px !important; }
+    h3 { font-size: 14px !important; }
+    .main .block-container { padding: 0.8rem; margin: 0.2rem; font-size: 14px; }
+    [data-testid="stHorizontalBlock"] { gap: 0.4rem; }
+    [data-testid="stMetricValue"] { font-size: 16px !important; }
+    [data-testid="stMetricLabel"] { font-size: 12px !important; }
+    .stButton > button { font-size: 13px !important; padding: 0.4rem 0.8rem !important; }
+    .stSelectbox, .stTextInput, .stTextArea, .stNumberInput { font-size: 14px; }
+    .stRadio > div > div > label { padding: 0.3rem 0.5rem !important; font-size: 13px !important; }
+    .stTabs [data-baseweb="tab"] { font-size: 13px !important; padding: 0.4rem 0.8rem !important; }
+    .stProgress > div > div { height: 8px; }
+    div[data-testid="stExpander"] { padding: 0.5rem; }
+}
+@media (max-width: 480px) {
+    h1 { font-size: 16px !important; }
+    .main .block-container { padding: 0.5rem; margin: 0.1rem; font-size: 13px; }
+    .stButton > button { font-size: 12px !important; padding: 0.3rem 0.6rem !important; }
+}

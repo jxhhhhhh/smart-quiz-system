@@ -1,0 +1,41 @@
+@startuml 10-测试覆盖率统计图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 12
+skinparam titleFontSize 14
+
+title **单元测试覆盖率统计（共 44 个用例）**\n
+
+<style>
+rectangle {
+  :depth 0 {
+    BackgroundColor #E3F2FD
+    BorderColor #1565C0
+    RoundCorner 8
+  }
+}
+</style>
+
+' 使用 salt 布局避免重叠
+top to bottom direction
+
+rectangle "数据库模块\n8 个用例" as DB #C8E6C9;line:2E7D32;text:1B5E20
+rectangle "解析器模块\n4 个用例" as PARSE #FFF9C4;line:F9A825;text:E65100
+rectangle "答案判断模块\n8 个用例" as ANS #E1BEE7;line:7B1FA2;text:4A148C
+rectangle "导入模块\n4 个用例" as IMP #B2EBF2;line:00838F;text:004D40
+rectangle "练习模块\n5 个用例" as PRACT #FFCCBC;line:E64A19;text:BF360C
+rectangle "模糊匹配模块\n5 个用例" as FUZZ #F0F4C3;line:827717;text:F57F17
+rectangle "指纹去重模块\n4 个用例" as FP #D1C4E9;line:4527A0;text:311B92
+rectangle "质量检查模块\n3 个用例" as QC #B3E5FC;line:0277BD;text:01579B
+rectangle "统计模块\n3 个用例" as STAT #F8BBD0;line:C2185B;text:880E4F
+
+legend bottom
+  **测试结果：44 passed in 1.07s** ✅
+  ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+  测试框架：pytest 9.0.3
+  覆盖范围：核心业务逻辑 100%
+  执行时间：1.07 秒
+end legend
+
+@enduml

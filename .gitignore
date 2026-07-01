@@ -1,0 +1,51 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environment
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Database (runtime generated)
+data/*.db
+data/*.db-journal
+data/*.db-wal
+data/*.db-shm
+
+# Test output
+test_output.txt
+
+# Temp files
+_temp_upload_*
+*.tmp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Claude
+.claude/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+
+# Binary documents
+*.pptx
+*.docx
+*.pdf

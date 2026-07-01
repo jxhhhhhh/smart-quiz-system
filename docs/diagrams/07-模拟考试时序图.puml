@@ -1,0 +1,30 @@
+@startuml 07-模拟考试流程图
+!theme plain
+skinparam backgroundColor #FEFEFE
+skinparam shadowing false
+skinparam defaultFontSize 13
+skinparam activityBackgroundColor #E3F2FD
+skinparam activityBorderColor #1565C0
+skinparam activityDiamondBackgroundColor #FFF9C4
+skinparam activityDiamondBorderColor #F9A825
+
+title **模拟考试模块流程图**
+
+start
+:设置考试参数（题数 / 时长 / 题型 / 学科）;
+:随机抽题生成试卷;
+repeat
+  :展示题目 + 倒计时;
+  :用户答题;
+  if (剩余时间 < 5 分钟 ?) then (是)
+    :发出警告提示;
+  endif
+  if (时间耗尽 ?) then (是)
+    :自动交卷;
+    break
+  endif
+repeat while (还有题目 ?) is (是)
+:逐题评分;
+:生成成绩报告（总分 / 正确率 / 用时 / 逐题详情）;
+stop
+@enduml
