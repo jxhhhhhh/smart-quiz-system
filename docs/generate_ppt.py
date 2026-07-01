@@ -189,7 +189,7 @@ def main():
     add_text_box(slide, 'Python 程序设计课程设计', Inches(1), Inches(2.5), Inches(8), Inches(0.4),
                  size=Pt(16), color=GRAY, align=PP_ALIGN.CENTER)
 
-    info = '姓名：金晓红    班级：24软件工程1班    指导教师：龙雪玲\n信息工程学院    2026年6月'
+    info = '姓名：jxh    班级：24软件工程1班    指导教师：***\n信息工程学院    2026年6月'
     add_text_box(slide, info, Inches(1), Inches(3.8), Inches(8), Inches(0.8),
                  size=Pt(14), color=GRAY, align=PP_ALIGN.CENTER)
 
@@ -559,14 +559,14 @@ def main():
     add_text_box(slide, '75个测试 · 5种题型 · 4种练习模式 · 6张数据表 · 20个已修复问题',
                  Inches(1), Inches(3.5), Inches(8), Inches(0.4),
                  size=Pt(14), color=GRAY, align=PP_ALIGN.CENTER)
-    add_text_box(slide, '姓名：金晓红    班级：24软件工程1班',
+    add_text_box(slide, '姓名：jxh    班级：24软件工程1班',
                  Inches(1), Inches(4.2), Inches(8), Inches(0.4),
                  size=Pt(14), color=GRAY, align=PP_ALIGN.CENTER)
     add_text_box(slide, '欢迎提问！ Q & A', Inches(1), Inches(4.8), Inches(8), Inches(0.4),
                  size=Pt(18), color=WHITE, bold=True, align=PP_ALIGN.CENTER)
 
     # ─── 保存 ───
-    output = '智能刷题系统_答辩PPT_金晓红_v2.pptx'
+    output = '智能刷题系统_答辩PPT_jxh_v2.pptx'
     prs.save(output)
     print(f'✅ PPT已生成: {output}')
 

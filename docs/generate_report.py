@@ -26,7 +26,7 @@ BOLD_PHRASES = [
     "新增 31 个", "较初始版本增加",
     "B-12", "B-13", "B-14", "B-15", "B-16", "B-17", "B-18", "B-19", "B-20",
     "预编译正则", "导入逻辑去重", "prompt 语言统一",
-    "姓名：金晓红",
+    "姓名：jxh",
     "双层解析引擎的设计", "答案判断的边界条件",
     "多用户数据隔离", "密码安全升级", "数据库连接管理",
     "收获", "不足",
@@ -168,9 +168,9 @@ def main():
 
     info = [
         ('项  目  名  称', '智能刷题系统（Smart Quiz System）'),
-        ('项  目  成  员', '金晓红'),
+        ('项  目  成  员', 'jxh'),
         ('专  业  班  级', '24软件工程1班'),
-        ('指  导  教  师', '龙雪玲'),
+        ('指  导  教  师', '***'),
     ]
     for label, value in info:
         add_mixed_para(doc, [
@@ -838,7 +838,7 @@ elif remaining < 5:
     # ═══════════════════════════════════════════════════════════
     add_para(doc, '6 总结', size=16, bold=True, align=WD_ALIGN_PARAGRAPH.CENTER)
 
-    add_para(doc, '姓名：金晓红', bold=True)
+    add_para(doc, '姓名：jxh', bold=True)
     add_para(doc, '总结：在本次课程设计中，我独立完成了智能刷题系统的全部开发工作，涵盖系统架构设计、数据库管理、正则解析引擎、AI 集成、Web 界面、用户认证、数据可视化等模块。', first_line_indent=Cm(0.74))
 
     add_para(doc, '遇到的主要问题与解决方案：', bold=True)
@@ -860,7 +860,7 @@ elif remaining < 5:
     add_para(doc, 'Streamlit 框架的前端交互能力有限，无法实现拖拽排序、实时协作等复杂 UI；移动端响应式布局虽已添加媒体查询但在小屏幕上体验仍有优化空间；异常处理对用户不够友好，部分错误信息仍是技术性描述。未来可考虑引入 React/Vue 前端框架，以及添加更完善的用户引导和错误提示。', first_line_indent=Cm(0.74))
 
     # ─── 保存 ───
-    output = '课程设计报告_金晓红_v2.docx'
+    output = '课程设计报告_jxh_v2.docx'
     doc.save(output)
     print(f'✅ 已生成: {output}')
 
